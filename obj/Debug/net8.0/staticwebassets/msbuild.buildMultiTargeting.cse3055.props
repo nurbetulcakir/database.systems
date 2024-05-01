@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\cse3055.props" />
+</Project>
