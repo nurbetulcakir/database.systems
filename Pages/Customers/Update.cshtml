@@ -1,0 +1,53 @@
+﻿@page
+@model cse3055.Pages.Customers.UpdateModel
+@{
+}
+
+
+<br>
+<br>
+
+<div class="container">
+
+    <form method="post">
+        <div class="row">
+            <div class=" col-md-12 col-lg-6 ">
+
+                <h2>Change Customer Information</h2>
+                <br><br>
+
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="CustomerID" placeholder="Customer ID" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="Name" placeholder="Name" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="District" placeholder="District" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="PhoneNumber" placeholder="Phone Number" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="FaxNumber" placeholder="Fax Number" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="Website" placeholder="Website" value="">
+                </div>
+
+
+                @if (!string.IsNullOrEmpty(Model.successMessage))
+                {
+                    <div class="alert alert-success mt-3" role="alert">
+                        @Model.successMessage
+                    </div>
+                }
+                <button type="submit" class="btn btn-danger">Submit</button>
+                <br>
+                <br>
+                <a class="btn btn-dark btn-sm" href="/Customers/Customer">Back to Home</a>
+       </div>
+    </form>
+
+
+</div>

@@ -1,0 +1,75 @@
+﻿@page
+@model cse3055.Pages.Customers.CustomerModel
+@{
+    Model.OnGet();
+}
+@using System
+@using System.Collections.Generic
+@using cse3055.Pages.Customers
+
+
+<div class="container">
+    <h2>Customer Information</h2>
+    <a class="btn btn-primary mb-3" href="/Customers/Add">Add Customer</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center" ;">Customer ID</th>
+                    <th class="text-center" ;">Name</th>
+                    <th class="text-center" ;">District</th>
+                    <th class="text-center" ;">Phone Number</th>
+                    <th class="text-center" ;">Fax Number</th>
+                    <th class="text-center" ;">Website</th>
+                    <th class="text-center" ;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Customers != null && Model.Customers.Any())
+                {
+                    @foreach (var customer in Model.Customers)
+                    {
+                        <tr>
+                            <td class="align-middle col-1">@customer.CustomerID</td>
+                            <td class="align-middle col-2">@customer.Name</td>
+                            <td class="align-middle col-2">@customer.District</td>
+                            <td class="align-middle col-2">@customer.PhoneNumber</td>
+                            <td class="align-middle col-2">@customer.FaxNumber</td>
+                            <td class="align-middle col-2">@customer.Website</td>
+                            <td class="align-middle col-1">
+                                <div class="btn-group" role="group" aria-label="Customer Actions">
+                                    <a class="btn btn-warning btn-sm" href="/Customers/Update?CustomerID=@customer.CustomerID">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="/Customers/Delete?CustomerID=@customer.CustomerID&Name_=@customer.Name">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center"><em>No customers found.</em></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    /* Style for table headers */
+    th {
+        text-align: center;
+    }
+
+    /* Style for table cells */
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Style for action buttons */
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+</style>

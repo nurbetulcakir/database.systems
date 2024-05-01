@@ -1,0 +1,54 @@
+﻿@page
+@model cse3055.Pages.Customers.AddModel
+@{
+}
+
+<br>
+<br>
+
+
+<div class="container">
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            <strong>@Model.ErrorMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form method="post">
+        <div class="row">
+            <div class=" col-md-12 col-lg-6 ">
+
+                <h2>ADD NEW CUSTOMER</h2>
+                <br><br>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="CustomerID" id="exampleFormControlInput1" placeholder="Customer ID" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="Name" placeholder="Name" aria-label="Name" value="">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <input type="text" class="form-control required" name="PhoneNumber" id="exampleFormControlInput1" placeholder="PhoneNumber" value="">
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <input type="text" class="form-control required" name="FaxNumber" id="exampleFormControlInput1" placeholder="FaxNumber" value="">
+                    </div>
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="District" placeholder="District" aria-label="District" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="Website" id="exampleFormControlInput1" placeholder="Website" value="">
+                </div>
+                @if (!string.IsNullOrEmpty(Model.successMessage))
+                {
+                    <div class="alert alert-success mt-3" role="alert">
+                        @Model.successMessage
+                    </div>
+                }
+                <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
+    </form>
+</div>

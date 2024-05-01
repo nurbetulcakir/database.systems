@@ -1,0 +1,78 @@
+﻿@page
+@model cse3055.Pages.Products.ProductModel
+@{
+    Model.OnGet();
+}
+
+<div class="container">
+    <h2>Our Products</h2>
+    <a class="btn btn-primary mb-3" href="/Products/Add">Add Products</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Product ID</th>
+                    <th class="text-center">Material</th>
+                    <th class="text-center">Vertical Section Type</th>
+                    <th class="text-center">Vertical Section Size</th>
+                    <th class="text-center">Alloy</th>
+                    <th class="text-center">Specific Weight (KG)</th>
+                    <th class="text-center">Length (Meters)</th>
+                    <th class="text-center">Weight/One Piece (KG)</th>
+                    <th class="text-center">Unit Price</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Products != null && Model.Products.Any())
+                {
+                    @foreach (var product in Model.Products)
+                    {
+                        <tr>
+                            <td class="text-center align-middle">@product.ProductID</td>
+                            <td class="text-center align-middle">@product.Material</td>
+                            <td class="text-center align-middle">@product.VerticalSectionType</td>
+                            <td class="text-center align-middle">@product.VerticalSectionSize</td>
+                            <td class="text-center align-middle">@product.Alloy</td>
+                            <td class="text-center align-middle">@product.SpecificWeightInKG</td>
+                            <td class="text-center align-middle">@product.LengthInMeters</td>
+                            <td class="text-center align-middle">@product.WeightOnePieceInKG</td>
+                            <td class="text-center align-middle">@product.UnitPrice</td>
+                            <td class="text-center align-middle">
+                                <div class="btn-group" role="group" aria-label="Product Actions">
+                                    <a class="btn btn-warning btn-sm" href="/Products/Update?ProductID=@product.ProductID">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="/Products/Delete?ProductID=@product.ProductID">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="10" class="text-center"><em>No products found.</em></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    /* Style for table headers */
+    th {
+        text-align: center;
+    }
+
+    /* Style for table cells */
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Style for action buttons */
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+</style>

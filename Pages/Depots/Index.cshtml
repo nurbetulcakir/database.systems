@@ -1,0 +1,65 @@
+﻿@page
+@model cse3055.Pages.Depots.IndexModel
+@{
+    Model.OnGet();
+}
+
+<div class="container">
+    <h2>Depots</h2>
+    <a class="btn btn-primary mb-3" href="/Depots/Add">Add Depots</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">DepotID</th>
+                    <th class="text-center">DepotProductID</th>
+                    <th class="text-center">DepotProduct</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Depots != null && Model.Depots.Any())
+                {
+                    @foreach (var depot in Model.Depots)
+                    {
+                        <tr>
+                            <td class="text-center align-middle">@depot.DepotID</td>
+                            <td class="text-center align-middle">@depot.DepotProductID</td>
+                            <td class="text-center align-middle">@depot.DepotProduct</td>
+                            <td class="text-center align-middle">
+                                <div class="btn-group" role="group" aria-label="Depot Actions">
+                                    <a class="btn btn-warning btn-sm" href="/Depots/Update?DepotID=@depot.DepotID">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="/Depots/Delete?DepotID=@depot.DepotID">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center"><em>No depots found.</em></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    /* Style for table headers */
+    th {
+        text-align: center;
+    }
+
+    /* Style for table cells */
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Style for action buttons */
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+</style>

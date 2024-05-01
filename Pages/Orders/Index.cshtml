@@ -1,0 +1,66 @@
+﻿@page
+@model cse3055.Pages.Orders.IndexModel
+@{
+    Model.OnGet();
+}
+
+<div class="container">
+    <h2>Orders</h2>
+    <a class="btn btn-primary mb-3" href="/Orders/Add">Create Orders</a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="text-center">Order ID</th>
+                    <th class="text-center">Customer ID</th>
+                    <th class="text-center">Order Date</th>
+                    <th class="text-center">Delivery Address</th>
+                    <th class="text-center">Total Cost</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Orders != null && Model.Orders.Any())
+                {
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td class="text-center align-middle">@order.OrderID</td>
+                            <td class="text-center align-middle">@order.CustomerID</td>
+                            <td class="text-center align-middle">@order.OrderDate</td>
+                            <td class="text-center align-middle">@order.DeliveryAddress</td>
+                            <td class="text-center align-middle">@order.TotalCost</td>
+                            <td class="text-center align-middle">@order.Status_</td>
+                            <td class="text-center align-middle">
+                                <div class="btn-group" role="group" aria-label="Order Actions">
+                                    <a class="btn btn-warning btn-sm" href="/Orders/Update?OrderID=@order.OrderID">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="/Orders/Delete?OrderID=@order.OrderID">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center"><em>No orders found.</em></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    /* Table styling */
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+</style>

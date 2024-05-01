@@ -1,0 +1,66 @@
+﻿@page
+@model cse3055.Pages.ContactModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <h1 style="font-weight: bold; font-size: 3em;">CONTACT INFORMATION</h1>
+    <style>
+        /* CSS styling for layout */
+        h1 {
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .map-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        #sidebar {
+            width: 45%; 
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-info">
+        <p>Emekyemez Mah. Yolcuzade İskender Cad. Karagül Business Center No:2-57 Beyoğlu/Istanbul</p>
+        <p>Office: Zafer Mah. Maintenance Repair 10th St. No:22 Çorlu/TEKİRDAĞ</p>
+        <p>Phone: +90 850 305 37 44</p>
+        <p>Whatsapp Support Line: +90 531 717 99 52</p>
+        <p>Email: destek@renklimetal.com</p>
+    </div>
+
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <gmp-map center="41.026763916015625,28.969085693359375" zoom="14" map-id="DEMO_MAP_ID">
+        <gmp-advanced-marker position="41.026763916015625,28.969085693359375" title="My location">
+        </gmp-advanced-marker>
+    </gmp-map>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIbzaGro3MahkNsUWyi8AsCEg7Eh14b3I&callback=initMap&v=weekly" defer></script>
+</body>
+</html>

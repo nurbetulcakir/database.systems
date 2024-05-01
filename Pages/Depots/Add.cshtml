@@ -1,0 +1,42 @@
+﻿@page
+@model cse3055.Pages.Depots.AddModel
+@{
+}
+
+<br>
+<br>
+
+<div class="container">
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            <strong>@Model.ErrorMessage</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <form method="post">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <h2>ADD NEW DEPOT</h2>
+                <br><br>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="DepotID" id="exampleFormControlInput1" placeholder="Depot ID" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="DepotProductID" placeholder="Name" aria-label="Name" value="">
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <input type="text" class="form-control required" name="DepotProduct" id="exampleFormControlInput1" placeholder="Depot Product" value="">
+                </div>
+                @if (!string.IsNullOrEmpty(Model.successMessage))
+                {
+                    <div class="alert alert-success mt-3" role="alert">
+                        @Model.successMessage
+                    </div>
+                }
+                <button type="submit" class="btn btn-danger">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

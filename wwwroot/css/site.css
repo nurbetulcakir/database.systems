@@ -1,0 +1,45 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+/* Contact information div */
+.contact-info {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 100%;
+    width: fit-content;
+}
+
+    /* Styling for paragraphs within contact-info */
+    .contact-info p {
+        margin: 5px 0;
+    }
+
+        /* Bold style for first paragraph within contact-info */
+        .contact-info p:first-child {
+            font-weight: bold;
+        }

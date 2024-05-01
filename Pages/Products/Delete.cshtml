@@ -1,0 +1,87 @@
+﻿@page
+@using System.Data.SqlClient
+@using System.Data
+
+@{
+    try
+    {
+        String productID = Request.Query["ProductID"];
+        string connectionString = "Data Source=MUZLAC;Initial Catalog=Database_Project;Integrated Security=True;";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            using (SqlCommand command = new SqlCommand("ProductEdit", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Add the parameters for the stored procedure
+                command.Parameters.AddWithValue("@SelectOption", "Delete");
+                command.Parameters.AddWithValue("@ProductID", productID);
+
+                command.ExecuteNonQuery();
+            }
+
+            connection.Close();
+        }
+    }
+    catch (SqlException ex)
+    {
+        // Handle exceptions or errors
+        Console.WriteLine("An error occurred: " + ex.Message);
+        Response.Redirect("/Customers/ss");
+    }
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Deletion Successful</title>
+    <!-- Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z0Lf0Ag1S9kZsN18JmwpHGDlnzLq5i6FpWmONm"
+          crossorigin="anonymous">
+    <!-- Bootstrap Icons CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .vertical-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Adjust this value to change the height (70% of viewport height in this example) */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>Deletion was successful</h2>
+                    <a href="/Products/Index" class="btn btn-primary btn-lg">Back to Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
